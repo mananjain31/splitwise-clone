@@ -1,26 +1,27 @@
-const { DbConnectionFactory } = require("../db");
+const { DbConnectionFactory } = require("../db/index");
 
 class UserDao {
   #db = DbConnectionFactory.get();
   getUsers = async () => {
     return new Promise((resolve, reject) =>
-      db.all("SELECT * from Users", (err, users) => {
+      this.#db.all("SELECT * from Users", (err, users) => {
         if (err) return reject(err);
         return resolve(users);
       })
     );
   };
   addUser = (user) => {
-    const statement = db.prepare(
+    const statement = this.#db.prepare(
       `
-        INSERT INTO Users (name, contactnumber, email) VALUES (?, ?, ?);
+        INSERT INTO Users (name, contactnumber, email, password) VALUES (?, ?, ?, ?);
         `
     );
+    console.log(user);
     const user1 = statement.run(
-      user.username,
-      user.contactnumber,
+      user.name,
+      user.contactNumber,
       user.email,
-      user.gender
+      user.password
     );
     const user2 = statement.finalize();
     return [user1, user2];

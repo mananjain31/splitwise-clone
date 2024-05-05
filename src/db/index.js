@@ -26,7 +26,8 @@ const initDB = (db = DbConnectionFactory.get()) => {
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         name TEXT NOT NULL,
         contactnumber TEXT NOT NULL UNIQUE,
-        email TEXT NOT NULL UNIQUE
+        email TEXT NOT NULL UNIQUE,
+        password TEXT NOT NULL
     );
   `);
   db.run(`
