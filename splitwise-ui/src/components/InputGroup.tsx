@@ -20,15 +20,25 @@ export default function InputGroup({
   max = undefined,
   control = undefined,
 }: Props) {
+  const error =
+    control?.formErrors?.[id] instanceof Error
+      ? control?.formErrors?.[id].message
+      : control?.formErrors?.[id];
   return (
     <div className="flex flex-col">
-      {label ? (
-        <label className="text-sm" htmlFor={id}>
-          {label}
-        </label>
-      ) : (
-        <></>
-      )}
+      <span>
+        {label && (
+          <label className="text-sm" htmlFor={id}>
+            {label}
+          </label>
+        )}
+        &nbsp;&nbsp;
+        {error && (
+          <label className="text-sm text-red-500" htmlFor={id}>
+            {error}
+          </label>
+        )}
+      </span>
       <input
         {...(control !== undefined
           ? {
