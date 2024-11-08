@@ -3,19 +3,19 @@ import Button from "./Button";
 import useToggle from "../hooks/useToggle";
 const linkElems = (
   <>
+    <Link to="/">
+      <Button>Home</Button>
+    </Link>
     <Link to="/login">
       <Button>Login</Button>
     </Link>
     <Link to="/register">
       <Button> Register</Button>
     </Link>
-    <Link to="/">
-      <Button>Home</Button>
-    </Link>
   </>
 );
 export default function Navbar() {
-  const [isHamMenuOpen, toggleHamMenu] = useToggle(true);
+  const [isHamMenuOpen, toggleHamMenu] = useToggle(false);
   return (
     <>
       <nav className="px-4 py-2 bg-yellow-300 flex items-center justify-between">
@@ -41,7 +41,7 @@ export default function Navbar() {
         <div
           className={`
               sm:hidden gap-5 text-lg flex flex-col items-end 
-              transform translate-x-full transition-transform duration-300 h-full absolute right-0 px-2 py-2 top-[0] bg-yellow-300
+              transform transition-transform duration-300 h-full absolute right-0 px-2 py-2 top-[0] bg-yellow-300
             ${isHamMenuOpen ? "translate-x-0" : "translate-x-full"}
           `}
         >
