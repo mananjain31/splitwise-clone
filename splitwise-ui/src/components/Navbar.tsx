@@ -1,8 +1,15 @@
+import { Link } from "react-router-dom";
+
 export default function Navbar() {
   return (
     <nav className="px-4 py-2 bg-yellow-300 flex items-center justify-between">
       <h1 className="text-xl font-bold">Splitwise</h1>
-      <button>
+      <div className="hidden gap-5 text-lg justify-end items-center sm:flex">
+        <Link to="/login">Login</Link>
+        <Link to="/register">Register</Link>
+        <Link to="/">Home</Link>
+      </div>
+      <button className="sm:hidden">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           x="0px"
